@@ -4,25 +4,42 @@ using UnityEngine;
 
 public class PreceduralGeneration : MonoBehaviour
 {
-    [SerializeField] private Transform plane;
+    [SerializeField] private Transform plane1;
+    [SerializeField] private Transform plane2;
+    [SerializeField] private Transform plane3;
+    [SerializeField] private Transform plane4; //taking multiple planes for multiple prefabs containing different obstacles
 
     Vector2 deltaPosition = new Vector2(11f,0);
-    Vector2 startPosition = new Vector2(22f,-5.30f);
-    // Vector2 currentPosition = startPosition;
+    Vector2 startPosition = new Vector2(19f,-5.30f); //position of first ground plane prefab
 
     // Start is called before the first frame update
 
-    void OnTriggerEnter(Collider instantiationTrigger)
+    void OnTriggerEnter2D(Collider2D instantiationTrigger)
     {
-        if (instantiationTrigger.tag == "trigger")
-        {
-            InstantiatePlane();
-        }
+        Debug.Log("Triggered");
+        InstantiatePlane();
     }
 
-    void InstantiatePlane()
+    public void InstantiatePlane()
     {
-        Instantiate(plane, startPosition, Quaternion.identity);
+        //for randomly deciding which prefab will be instantiated
+        int prefabIndex = Random.Range(1,5);
+        if (prefabIndex == 1)
+        {
+            Instantiate(plane1, startPosition, Quaternion.identity);
+        }
+        if (prefabIndex == 2)
+        {
+            Instantiate(plane2, startPosition, Quaternion.identity);
+        }
+        if (prefabIndex == 3)
+        {
+            Instantiate(plane3, startPosition, Quaternion.identity);
+        }
+        if (prefabIndex == 4)
+        {
+            Instantiate(plane4, startPosition, Quaternion.identity);
+        }
         startPosition += deltaPosition;
     }
 }
