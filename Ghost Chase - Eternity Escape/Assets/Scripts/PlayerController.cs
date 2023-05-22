@@ -5,10 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody2D player;
+    // public Transform playerTrans;
     // public Transform cam;
+    bool isAlive = true;
     // public Rigidbody2D Ghost;
 
     public float PlayerForwardSpeedForce = 500f;
+    public float CamMovementSpeed = 300f;
     public float GhostForwardSpeedForce = 600f;
     public float JumpForce = 30f;
     
@@ -21,11 +24,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        player.AddForce(new Vector2(PlayerForwardSpeedForce * Time.deltaTime,0));
-        // Ghost.AddForce(new Vector2(PlayerForwardSpeedForce * Time.deltaTime,0));
-        // cam.position += new Vector2(20, 0) * Time.deltaTime;
+        if (isAlive)
+        {
+            player.AddForce(new Vector2(PlayerForwardSpeedForce * Time.deltaTime,0));
+            // Ghost.AddForce(new Vector2(PlayerForwardSpeedForce * Time.deltaTime,0));
+            // cam.position.x += (playerTrans.position.x + 9);
+        }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+    public void jump()
+    {
+        if (isAlive)
         {
             player.AddForce(new Vector2(0,JumpForce));
         }

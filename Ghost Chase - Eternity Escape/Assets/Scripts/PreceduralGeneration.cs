@@ -23,7 +23,7 @@ public class PreceduralGeneration : MonoBehaviour
     public void InstantiatePlane()
     {
         //for randomly deciding which prefab will be instantiated
-        int prefabIndex = Random.Range(1,5);
+        int prefabIndex = Random.Range(1,4);
         if (prefabIndex == 1)
         {
             Instantiate(plane1, startPosition, Quaternion.identity);
