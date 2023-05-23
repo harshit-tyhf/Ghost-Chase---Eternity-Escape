@@ -10,7 +10,7 @@ public class PreceduralGeneration : MonoBehaviour
     [SerializeField] private Transform plane4; //taking multiple planes for multiple prefabs containing different obstacles
 
     Vector2 deltaPosition = new Vector2(11f,0);
-    Vector2 startPosition = new Vector2(19f,-5.30f); //position of first ground plane prefab
+    Vector2 startPosition = new Vector2(19f,-5.30f); //position of first ground plane prefab on which the player is standing in the beginning
 
     // Start is called before the first frame update
 
